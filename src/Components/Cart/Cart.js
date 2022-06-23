@@ -35,6 +35,7 @@ export const Cart = () => {
                                     onClick={() => {
                                         const filteredArray = response.filter((indiv) => {
                                             if(item.cell !== indiv.cell) return indiv
+                                            else return null
                                         })
                                         data.setState(filteredArray)
                                     }}
@@ -55,6 +56,7 @@ export const Cart = () => {
                             onChange={(e) => {
                                 const filteredArray = response.filter(item => {
                                     if(item.name.first.toLowerCase().includes(e.target.value.toLocaleLowerCase())) return item
+                                    else return null
                                 })
                                 setDisplaydata(filteredArray)
                             }}

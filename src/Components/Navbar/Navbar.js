@@ -22,22 +22,11 @@ export const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto w-75 justify-content-center mb-2 mb-lg-0">
-                <li className="nav-item">
+                <li className="nav-item current">
                 <Link to='/' className="nav-link active" aria-current="page">Home</Link>
                 </li>
-                <li className="nav-item">
-                <Link to='/cart' className="nav-link active">Users ({state})</Link>
-                </li>
-                <li className="nav-item dropdown">
-                <Link to='/' className="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </Link>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><Link to='/' className="dropdown-item">Action</Link></li>
-                    <li><Link to='/' className="dropdown-item">Another action</Link></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><Link to='/' className="dropdown-item">Something else here</Link></li>
-                </ul>
+                <li className="nav-item current">
+                <Link to='/cart' className="nav-link active">Users <span style={{fontSize:'10px'}}>({state})</span></Link>
                 </li>
             </ul>
             <form className="d-flex">

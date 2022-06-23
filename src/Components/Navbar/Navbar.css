@@ -1,3 +1,8 @@
-.active:hover{
+.active:hover, .active:focus{
     font-size: larger;
+    border-bottom-width: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: brown;
 }
