@@ -9,7 +9,7 @@ export const Navbar = () => {
     const [state,setState] = useState(0)
 
     useEffect(() => {
-        if(data.state !== null) setState(data.state.length)
+          if(data.state !== undefined) setState(data.state.length)
     },[data])
 
     return(
