@@ -20,9 +20,9 @@ export const Home = () => {
                             <div>
                                 <img src={`${item.picture.large}`} alt={`${item.picture.large}`} className='w-100' />
                             </div>
-                            <div className="overflow-scroll">
+                            <div>
                                 <h3>{item.name.title} {item.name.first} {item.name.last}</h3>
-                                <h6>{item.email}</h6>
+                                <h6 style={{fontSize:'12px'}}>{item.email}</h6>
                                 <h4>{item.phone}</h4>
                                 <h6>{item.gender}</h6>
                             </div>

@@ -21,13 +21,13 @@ export const Cart = () => {
             {
                 displayData.map((item) => {
                     return(
-                        <div key={`${item.cell}`} className="col-12 col-sm-4 col-lg-3 col-xl-2 m-2 p-2 shadow text-center">
+                        <div key={`${item.cell}`} className="col-12 col-sm-4 col-lg-4 col-xl-3 m-2 p-2 shadow text-center">
                             <div>
                                 <img src={`${item.picture.large}`} alt={`${item.picture.large}`} className='w-100' />
                             </div>
-                            <div className="overflow-scroll">
+                            <div>
                                 <h3>{item.name.title} {item.name.first} {item.name.last}</h3>
-                                <h6>{item.email}</h6>
+                                <h6 style={{fontSize:'12px'}}>{item.email}</h6>
                                 <h4>{item.phone}</h4>
                                 <h6>{item.gender}</h6>
                             </div>

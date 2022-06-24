@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AppContext } from "../../AppContext/AppContext"
 import './Navbar.css'
+import { FaHome } from 'react-icons/fa'
+import { IconContext } from "react-icons"
 
 export const Navbar = () => {
 
@@ -23,7 +25,11 @@ export const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto w-75 justify-content-center mb-2 mb-lg-0">
                 <li className="nav-item current">
-                <Link to='/' className="nav-link active" aria-current="page">Home</Link>
+                <Link to='/' className="nav-link active" aria-current="page">
+                    <IconContext.Provider value={{size:'25px', color:'grey'}} >
+                        <FaHome/>
+                    </IconContext.Provider>
+                </Link>
                 </li>
                 <li className="nav-item current">
                 <Link to='/cart' className="nav-link active">Users <span style={{fontSize:'10px'}}>({state})</span></Link>
