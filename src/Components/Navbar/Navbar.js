@@ -3,15 +3,19 @@ import { Link } from "react-router-dom"
 import { AppContext } from "../../AppContext/AppContext"
 import './Navbar.css'
 import { FaHome } from 'react-icons/fa'
+import { HiUserGroup } from 'react-icons/hi'
 import { IconContext } from "react-icons"
+import { TiUserDelete } from 'react-icons/ti'
 
 export const Navbar = () => {
 
     const data = useContext(AppContext)
     const [state,setState] = useState(0)
+    const [arch,setArch] = useState(0)
 
     useEffect(() => {
           if(data.state !== undefined) setState(data.state.length)
+          if(data.archieve !== undefined) setArch(data.archieve.length)
     },[data])
 
     return(
@@ -26,18 +30,29 @@ export const Navbar = () => {
             <ul className="navbar-nav me-auto w-75 justify-content-center mb-2 mb-lg-0">
                 <li className="nav-item current">
                 <Link to='/' className="nav-link active" aria-current="page">
-                    <IconContext.Provider value={{size:'25px', color:'grey'}} >
+                    <IconContext.Provider value={{size:'25px', color:'grey' }} >
                         <FaHome/>
                     </IconContext.Provider>
                 </Link>
                 </li>
                 <li className="nav-item current">
-                <Link to='/cart' className="nav-link active">Users <span style={{fontSize:'10px'}}>({state})</span></Link>
+                <Link to='/cart' className="nav-link active">
+                    <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
+                        <HiUserGroup /> 
+                    </IconContext.Provider>&nbsp;
+                        <span style={{fontSize:'10px'}}>({state})</span></Link>
+                </li>
+                <li className="nav-item current">
+                <Link to='/archieve' className="nav-link active">
+                    <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
+                        <TiUserDelete /> 
+                    </IconContext.Provider>&nbsp;
+                        <span style={{fontSize:'10px'}}>({arch})</span></Link>
                 </li>
             </ul>
             <form className="d-flex">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success" type="submit">Search</button>
+                <input className="form-control me-2" type = 'text' placeholder="Search" aria-label="Search"  />
+                <button className="btn btn-outline-success" onClick={(e) => { e.preventDefault()}} >Search</button>
             </form>
             </div>
         </div>

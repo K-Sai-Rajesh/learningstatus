@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../AppContext/AppContext"
+import { FaSearch } from 'react-icons/fa'
 
 export const Cart = () => {
 
@@ -21,7 +22,7 @@ export const Cart = () => {
             {
                 displayData.map((item) => {
                     return(
-                        <div key={`${item.cell}`} className="col-12 col-sm-4 col-lg-4 col-xl-3 m-2 p-2 shadow text-center">
+                        <div key={`${item.cell}`} className="col-10 col-sm-4 col-lg-3 col-xl-2 m-2 p-2 shadow text-center">
                             <div>
                                 <img src={`${item.picture.large}`} alt={`${item.picture.large}`} className='w-100' />
                             </div>
@@ -37,7 +38,14 @@ export const Cart = () => {
                                             if(item.cell !== indiv.cell) return indiv
                                             else return null
                                         })
+                                        const archivedArray = response.filter((indiv) => {
+                                            if(item.cell === indiv.cell) return indiv
+                                            else return null
+                                        })
                                         data.setState(filteredArray)
+                                            if(data.archieve === undefined) data.setArchieve(archivedArray)
+                                            else data.setArchieve([...data.archieve,...archivedArray])
+
                                     }}
                             >Delete</button>
                         </div>
@@ -51,16 +59,22 @@ export const Cart = () => {
     return(
         <div className="container">
             <div className="row justify-content-around">
-                <div className="col-12 p-5">                
-                    <input  className="form-control me-2" type="search" placeholder="Search by First Name" aria-label="Search"
-                            onChange={(e) => {
-                                const filteredArray = response.filter(item => {
-                                    if(item.name.first.toLowerCase().includes(e.target.value.toLocaleLowerCase())) return item
-                                    else return null
-                                })
-                                setDisplaydata(filteredArray)
-                            }}
-                        />
+                <div className="col-12 p-5">     
+                    <div className="input-group">
+                        <input  className="form-control" type="search" placeholder="Search by First Name" aria-label="Search"
+                                onChange={(e) => {
+                                    const filteredArray = response.filter(item => {
+                                        if(item.name.first.toLowerCase().includes(e.target.value.toLocaleLowerCase())) return item
+                                        else return null
+                                    })
+                                    setDisplaydata(filteredArray)
+                                }}
+                            />
+                            <span className="input-group-text" id="basic-addon1">
+                                <FaSearch /> 
+                            </span>
+                    </div>           
+                    
                 </div>
             {
                 displayData !== null ? Display() : <h1 key='1'>Data Not Fetched</h1>

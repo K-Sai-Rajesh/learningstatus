@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../AppContext/AppContext"
 
-export const Home = () => {
+export const Archive = () => {
 
     let data = useContext(AppContext)   
     const [response, setResponse] = useState(null)
     
     useEffect(() => {
-        if(data.state !== undefined) setResponse(data.state)
+            if(data.archieve !== undefined) setResponse(data.archieve)
     },[data])
 
     function Display(){
@@ -26,6 +26,13 @@ export const Home = () => {
                                 <h4>{item.phone}</h4>
                                 <h6>{item.gender}</h6>
                             </div>
+                            <button className="btn btn-tranparent border mt-3 border-1 rounded" 
+                                    onClick={() => {
+                                        response.splice(response.indexOf(item),1)
+                                        data.setArchieve(response)
+                                        data.setState([...data.state,item])
+                                    }}
+                            >Restore</button>
                         </div>
                     )
                 })
