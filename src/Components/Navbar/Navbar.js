@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AppContext } from "../../AppContext/AppContext"
 import './Navbar.css'
-import { FaHome } from 'react-icons/fa'
+import { FaHome, FaClock } from 'react-icons/fa'
 import { HiUserGroup } from 'react-icons/hi'
 import { IconContext } from "react-icons"
 import { TiUserDelete } from 'react-icons/ti'
@@ -48,6 +48,13 @@ export const Navbar = () => {
                         <TiUserDelete /> 
                     </IconContext.Provider>&nbsp;
                         <span style={{fontSize:'10px'}}>({arch})</span></Link>
+                </li>
+                <li className="nav-item current">
+                <Link to='/data' className="nav-link active">
+                    <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
+                        <FaClock /> 
+                    </IconContext.Provider>
+                </Link>
                 </li>
             </ul>
             <form className="d-flex">

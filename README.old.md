@@ -42,3 +42,14 @@ For Learning Purpose
 			unshift()
 
 			splice(1,2,'','')  // 1 specifies the index from where the items to be added or removed, 2 specifies no. of items to be removed from 1 index
+
+
+
+Tensile Strength of corn Starch
+		:	4.48 to 8.14 MPa
+		
+Tensile Strength of Wood
+		:	70 to 140MPa
+
+Tensile Strength of plywood
+		:	27.6 - 34.5 MPa

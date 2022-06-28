@@ -34,18 +34,7 @@ export const Cart = () => {
                             </div>
                             <button className="btn btn-tranparent border mt-3 border-1 rounded" 
                                     onClick={() => {
-                                        const filteredArray = response.filter((indiv) => {
-                                            if(item.cell !== indiv.cell) return indiv
-                                            else return null
-                                        })
-                                        const archivedArray = response.filter((indiv) => {
-                                            if(item.cell === indiv.cell) return indiv
-                                            else return null
-                                        })
-                                        data.setState(filteredArray)
-                                            if(data.archieve === undefined) data.setArchieve(archivedArray)
-                                            else data.setArchieve([...data.archieve,...archivedArray])
-
+                                        data.archieve === undefined ? data.setArchieve(response.splice(response.indexOf(item),1)) : data.setArchieve([...data.archieve, ...response.splice(response.indexOf(item),1)])
                                     }}
                             >Delete</button>
                         </div>
@@ -83,3 +72,17 @@ export const Cart = () => {
         </div>
     )
 }
+
+
+// const filteredArray = response.filter((indiv) => {
+//     if(item.cell !== indiv.cell) return indiv
+//     else return null
+// })
+// const archivedArray = response.filter((indiv) => {
+//     if(item.cell === indiv.cell) return indiv
+//     else return null
+// })
+// data.setState(filteredArray)
+//     if(data.archieve === undefined) data.setArchieve(archivedArray)
+//     else data.setArchieve([...data.archieve,...archivedArray])
+
