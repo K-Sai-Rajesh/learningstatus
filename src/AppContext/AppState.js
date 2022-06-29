@@ -96,6 +96,13 @@ export const AppState = (props) => {
                 min : 0
             }
         }, 
+        Mexico  :  {
+            flag : '-',
+            gap  : {
+                hr : 5,
+                min : 0
+            }
+        }, 
     }
 
     const [state, setState] = useState()

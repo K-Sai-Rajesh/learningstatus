@@ -41,7 +41,7 @@ const Data = () => {
                     let flag = 'AM'
 
                     if(data.TimeZones[`${entry}`].flag === '+'){
-                        if((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr > 12){
+                        if((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr > 11){
                             flag = 'PM'
                             if((new Date()).getUTCMinutes() + data.TimeZones[`${entry}`].gap.min > 59){
                                 hr = ((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr) -12 + 1
@@ -53,7 +53,7 @@ const Data = () => {
                         }
                         else{
                             if((new Date()).getUTCMinutes() + data.TimeZones[`${entry}`].gap.min > 59){
-                                hr = ((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr)+ 1
+                                hr = ((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr) + 1
                                 min = ((new Date()).getUTCMinutes() + data.TimeZones[`${entry}`].gap.min) - 60
                             }else{
                                 hr = ((new Date()).getUTCHours() + data.TimeZones[`${entry}`].gap.hr)
@@ -62,34 +62,39 @@ const Data = () => {
                         }
                     }
                     else if(data.TimeZones[`${entry}`].flag === '-'){
-
-                        if((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr > 12){
+                        
+                        if((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr < 0){
                             flag = 'PM'
-                            if( (new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min < 0){
-                                if((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr - 1 < 0){
-                                    hr = ((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr - 1) + 12
-                                    min = data.TimeZones[`${entry}`].gap.min
-                                }
-                                else{
-                                    hr = (new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr - 1
-                                    min = data.TimeZones[`${entry}`].gap.min
-                                }
-                            }else{
-                                hr = (new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr
-                                min = (new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min
+                            if((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min < 0){
+                                hr      =   (((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr) + 12) -1
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min) - 60
+                            }
+                            else{
+                                hr      =   ((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr) + 12
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min)
+                            }
+                        }    
+                        else if((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr > 12){
+                            flag = 'PM'
+                            if((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min < 0){
+                                hr      =   (((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr) + 12) -1
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min) - 60
+                            }
+                            else{
+                                hr      =   ((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr) + 12
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min)
                             }
                         }
-                        else{
-                            if( (new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min < 0){
-                                hr = (new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr - 1
-                                min = data.TimeZones[`${entry}`].gap.min
-                            }else{
-                                hr = (new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr
-                                min = (new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min
+                        else {
+                            if((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min < 0){
+                                hr      =   (((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr) + 12) -1
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min) - 60
+                            }
+                            else{
+                                hr      =   ((new Date()).getUTCHours() - data.TimeZones[`${entry}`].gap.hr)
+                                min     =   ((new Date()).getUTCMinutes() - data.TimeZones[`${entry}`].gap.min)
                             }
                         }
-
-                       
                     }
                     return(
                         <div key={entry} className="col-10 mt-5 p-3 col-sm-4 col-lg-4 shadow flex-column flex-sm-row justify-content-around">
@@ -109,7 +114,7 @@ const Data = () => {
     }
 
     return(
-        <div className="container">
+        <div className="container-fluid">
 
             <div className="row">
                 <div className="col-10 col-sm-5">

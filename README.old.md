@@ -53,3 +53,10 @@ Tensile Strength of Wood
 
 Tensile Strength of plywood
 		:	27.6 - 34.5 MPa
+
+
+
+Concepts :
+
+		Building your own hooks :
+			useHistory, useSelector
