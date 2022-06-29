@@ -6,6 +6,7 @@ import { FaHome, FaClock } from 'react-icons/fa'
 import { HiUserGroup } from 'react-icons/hi'
 import { IconContext } from "react-icons"
 import { TiUserDelete } from 'react-icons/ti'
+import { SiDatabricks } from 'react-icons/si'
 
 export const Navbar = () => {
 
@@ -50,9 +51,16 @@ export const Navbar = () => {
                         <span style={{fontSize:'10px'}}>({arch})</span></Link>
                 </li>
                 <li className="nav-item current">
-                <Link to='/data' className="nav-link active">
+                <Link to='/timezones' className="nav-link active">
                     <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
                         <FaClock /> 
+                    </IconContext.Provider>
+                </Link>
+                </li>
+                <li className="nav-item current">
+                <Link to='/data' className="nav-link active">
+                    <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
+                        <SiDatabricks /> 
                     </IconContext.Provider>
                 </Link>
                 </li>

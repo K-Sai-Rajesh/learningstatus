@@ -109,14 +109,17 @@ export const AppState = (props) => {
     const [archieve, setArchieve] = useState() 
     
     useEffect(() => {
-         try{   
-             axios.get('https://randomuser.me/api/?results=20')
-             .then((res) => {
-                 setState(res.data.results)
-             })
-             .catch((error) => {
-                 console.log(error)
-             })
+         try{ 
+            
+            
+              axios.get('https://randomuser.me/api/?results=20')
+              .then((res) => {
+                  setState(res.data.results)
+              })
+              .catch((error) => {
+                  console.log(error)
+              })
+
          }catch(e){
          console.log(e)
          }

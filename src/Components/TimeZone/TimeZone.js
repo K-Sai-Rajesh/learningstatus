@@ -2,7 +2,7 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../AppContext/AppContext"
 
-const Data = () => {
+const TimeZones = () => {
 
     const [state, setState] = useState(null)
     const data = useContext(AppContext)
@@ -137,4 +137,4 @@ const Data = () => {
     )
 }
 
-export default Data
+export default TimeZones
