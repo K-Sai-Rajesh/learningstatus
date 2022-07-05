@@ -16,15 +16,15 @@ export const Home = () => {
             {
                 response.map((item) => {
                     return(
-                        <div key={`${item.cell}`} className="col-10 col-sm-4 col-lg-3 col-xl-2 m-2 p-2 shadow text-center">
+                        <div key={URL.createObjectURL(item.image)} className="col-10 col-sm-4 col-lg-3 col-xl-2 m-2 p-2 shadow text-center">
                             <div>
-                                <img src={`${item.picture.large}`} alt={`${item.picture.large}`} className='w-100' />
+                                <img src={URL.createObjectURL(item.image)} alt={URL.createObjectURL(item.image)} className='w-100' />
                             </div>
                             <div>
-                                <h3>{item.name.title} {item.name.first} {item.name.last}</h3>
-                                <h6 style={{fontSize:'12px'}}>{item.email}</h6>
-                                <h4>{item.phone}</h4>
-                                <h6>{item.gender}</h6>
+                                <h3>{item.FullName}</h3>
+                                <h6 style={{fontSize:'12px'}}>{item.Email}</h6>
+                                <h4>{item.Phone}</h4>
+                                <h6>{item.Gender}</h6>
                             </div>
                         </div>
                     )

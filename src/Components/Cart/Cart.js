@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../AppContext/AppContext"
 import { FaSearch } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 export const Cart = () => {
 
     
     let data = useContext(AppContext)   
+    const navigate = useNavigate()
     const [response, setResponse] = useState(null)
     const [displayData, setDisplaydata] = useState(null)
 
     useEffect(() => {
-        if(data.state !== undefined){
+        if(data.state !== []){
             setResponse(data.state)
             setDisplaydata(data.state)
         }
@@ -24,19 +26,24 @@ export const Cart = () => {
                     return(
                         <div key={`${item.cell}`} className="col-10 col-sm-4 col-lg-3 col-xl-2 m-2 p-2 shadow text-center">
                             <div>
-                                <img src={`${item.picture.large}`} alt={`${item.picture.large}`} className='w-100' />
-                            </div>
-                            <div>
-                                <h3>{item.name.title} {item.name.first} {item.name.last}</h3>
-                                <h6 style={{fontSize:'12px'}}>{item.email}</h6>
-                                <h4>{item.phone}</h4>
-                                <h6>{item.gender}</h6>
-                            </div>
-                            <button className="btn btn-tranparent border mt-3 border-1 rounded" 
-                                    onClick={() => {
-                                        data.archieve === undefined ? data.setArchieve(response.splice(response.indexOf(item),1)) : data.setArchieve([...data.archieve, ...response.splice(response.indexOf(item),1)])
-                                    }}
-                            >Delete</button>
+                                 <img src={URL.createObjectURL(item.image)} alt={URL.createObjectURL(item.image)} className='w-100' />
+                             </div>
+                             <div>
+                                 <h3>{item.FullName}</h3>
+                                 <h6 style={{fontSize:'12px'}}>{item.Email}</h6>
+                                 <h4>{item.Phone}</h4>
+                                 <h6>{item.Gender}</h6>
+                             </div>
+                             <button className="btn btn-tranparent border mt-3 border-1 rounded" 
+                                     onClick={() => {
+                                         data.archieve === undefined ? data.setArchieve(response.splice(response.indexOf(item),1)) : data.setArchieve([...data.archieve, ...response.splice(response.indexOf(item),1)])
+                                     }}
+                             >Delete</button>
+                             <button className="btn btn-tranparent border mt-3 border-1 rounded" 
+                                     onClick={() => {
+                                        navigate(`/Profile/${item.Phone}`)
+                                     }}
+                             >Edit</button>
                         </div>
                     )
                 })
@@ -53,7 +60,7 @@ export const Cart = () => {
                         <input  className="form-control" type="search" placeholder="Search by First Name" aria-label="Search"
                                 onChange={(e) => {
                                     const filteredArray = response.filter(item => {
-                                        if(item.name.first.toLowerCase().includes(e.target.value.toLocaleLowerCase())) return item
+                                        if(item.FullName.toLowerCase().includes(e.target.value.toLocaleLowerCase())) return item
                                         else return null
                                     })
                                     setDisplaydata(filteredArray)
@@ -72,17 +79,3 @@ export const Cart = () => {
         </div>
     )
 }
-
-
-// const filteredArray = response.filter((indiv) => {
-//     if(item.cell !== indiv.cell) return indiv
-//     else return null
-// })
-// const archivedArray = response.filter((indiv) => {
-//     if(item.cell === indiv.cell) return indiv
-//     else return null
-// })
-// data.setState(filteredArray)
-//     if(data.archieve === undefined) data.setArchieve(archivedArray)
-//     else data.setArchieve([...data.archieve,...archivedArray])
-

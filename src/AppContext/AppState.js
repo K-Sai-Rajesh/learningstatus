@@ -105,25 +105,25 @@ export const AppState = (props) => {
         }, 
     }
 
-    const [state, setState] = useState()
+    const [state, setState] = useState([])
     const [archieve, setArchieve] = useState() 
     
-    useEffect(() => {
-         try{ 
+    // useEffect(() => {
+    //      try{ 
             
             
-              axios.get('https://randomuser.me/api/?results=20')
-              .then((res) => {
-                  setState(res.data.results)
-              })
-              .catch((error) => {
-                  console.log(error)
-              })
+    //           axios.get('https://randomuser.me/api/?results=20')
+    //           .then((res) => {
+    //               setState(res.data.results)
+    //           })
+    //           .catch((error) => {
+    //               console.log(error)
+    //           })
 
-         }catch(e){
-         console.log(e)
-         }
-     },[])
+    //      }catch(e){
+    //      console.log(e)
+    //      }
+    //  },[])
 
     return(
         <AppContext.Provider value={{ state, archieve, TimeZones, setArchieve,setState }}>

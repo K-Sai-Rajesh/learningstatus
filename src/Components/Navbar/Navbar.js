@@ -7,6 +7,7 @@ import { HiUserGroup } from 'react-icons/hi'
 import { IconContext } from "react-icons"
 import { TiUserDelete } from 'react-icons/ti'
 import { SiDatabricks } from 'react-icons/si'
+import { CgProfile } from 'react-icons/cg'
 
 export const Navbar = () => {
 
@@ -22,7 +23,7 @@ export const Navbar = () => {
     return(
         <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid p-3">
+        <div className="container">
             <Link to='/' className="navbar-brand">Navbar</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -58,9 +59,9 @@ export const Navbar = () => {
                 </Link>
                 </li>
                 <li className="nav-item current">
-                <Link to='/data' className="nav-link active">
+                <Link to='/profile' className="nav-link active">
                     <IconContext.Provider value={{ style:{ fontSize:'25px', color:'grey' } }} >
-                        <SiDatabricks /> 
+                        <CgProfile /> 
                     </IconContext.Provider>
                 </Link>
                 </li>

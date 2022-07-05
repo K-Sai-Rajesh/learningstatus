@@ -7,6 +7,8 @@ import { AppState } from './AppContext/AppState'
 import { Archive } from './Components/Archives/Archive';
 import TimeZones from './Components/TimeZone/TimeZone';
 import Data from './Components/Data/Data';
+import { Profile } from './Components/AddProfile/AddProfile';
+import { NewProfile } from './Components/EditProfile/EditProfile';
 
 function App() {
 
@@ -19,7 +21,9 @@ function App() {
           <Route path='/cart' element={<Cart />} />  
           <Route path='/archieve' element={<Archive />} />  
           <Route path='/timezones' element={<TimeZones />} />  
-          <Route path='/data' element={<Data />} />  
+          <Route path='/data' element={<Data />} />    
+          <Route path='/profile' element={<Profile />} />  
+          <Route path='/profile/:id' element={<NewProfile />} />  
         </Routes>   
       </BrowserRouter>
     </AppState>
