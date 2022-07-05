@@ -65,6 +65,11 @@ export const Navbar = () => {
                     </IconContext.Provider>
                 </Link>
                 </li>
+                <li className="nav-item current">
+                <Link to='/parentchild' className="nav-link active">
+                    ParentChild
+                </Link>
+                </li>
             </ul>
             <form className="d-flex">
                 <input className="form-control me-2" type = 'text' placeholder="Search" aria-label="Search"  />

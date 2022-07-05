@@ -9,6 +9,7 @@ import TimeZones from './Components/TimeZone/TimeZone';
 import Data from './Components/Data/Data';
 import { Profile } from './Components/AddProfile/AddProfile';
 import { NewProfile } from './Components/EditProfile/EditProfile';
+import { Parent } from './AppContext/ParentToChild';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/data' element={<Data />} />    
           <Route path='/profile' element={<Profile />} />  
           <Route path='/profile/:id' element={<NewProfile />} />  
+          <Route path='/parentchild' element={<Parent />} />  
         </Routes>   
       </BrowserRouter>
     </AppState>

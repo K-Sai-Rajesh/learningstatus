@@ -15,6 +15,7 @@ export const Profile = () => {
     function handleSubmit(e){
         e.preventDefault()
         data.setState([...data.state,state])
+        navigate('/cart')
     }
     console.log(state)
 
